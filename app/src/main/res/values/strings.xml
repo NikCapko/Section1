@@ -3,4 +3,6 @@
     <string name="login">Логин</string>
     <string name="password">Пароль</string>
     <string name="sign_in">Войти</string>
+    <string name="sign_in_success">Вы успешно авторизовались</string>
+    <string name="sign_in_error">Неверный логи или пароль</string>
 </resources>
