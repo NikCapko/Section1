@@ -4,5 +4,7 @@ import java.util.List;
 
 public interface IDataProvider {
 
-    public List<Person> getPersonList();
+    List<Person> getPersonList();
+
+    void addPerson(Person person);
 }

@@ -17,4 +17,9 @@ public class DemoDataProvider implements IDataProvider {
     public List<Person> getPersonList() {
         return personList;
     }
+
+    @Override
+    public void addPerson(Person person) {
+        personList.add(person);
+    }
 }

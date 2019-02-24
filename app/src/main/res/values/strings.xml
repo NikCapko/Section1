@@ -1,8 +1,12 @@
 <resources>
     <string name="app_name">Section1</string>
-    <string name="login">Логин</string>
-    <string name="password">Пароль</string>
-    <string name="sign_in">Войти</string>
+    <string name="sign_in_login">Логин</string>
+    <string name="sign_in_password">Пароль</string>
+    <string name="sign_in_sign_in">Войти</string>
+    <string name="sign_in_sign_up">Регистрация</string>
     <string name="sign_in_success">Вы успешно авторизовались</string>
     <string name="sign_in_error">Неверный логи или пароль</string>
+    <string name="sign_up_login">Логин</string>
+    <string name="sign_up_password">Пароль</string>
+    <string name="sign_up_sign_up">Зарегестрироваться</string>
 </resources>
