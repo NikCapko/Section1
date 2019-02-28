@@ -2,7 +2,7 @@ package com.example.section1;
 
 public class Person {
 
-    private String id;
+    private int id;
     private String firstName;
     private String lastName;
     private String email;
@@ -12,7 +12,7 @@ public class Person {
     public Person() {
     }
 
-    public Person(String id, String firstName, String lastName, String email, String login, String password) {
+    public Person(int id, String firstName, String lastName, String email, String login, String password) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -21,11 +21,11 @@ public class Person {
         this.password = password;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
