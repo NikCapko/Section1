@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        dataProvider = DemoDataProvider.newInstance();
         tvLabel = (TextView) findViewById(R.id.tv_label);
         etLogin = (EditText) findViewById(R.id.et_login);
         etPassword = (EditText) findViewById(R.id.et_password);
@@ -28,8 +29,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnSignUn = (Button) findViewById(R.id.btn_sign_up);
         btnSignIn.setOnClickListener(this);
         btnSignUn.setOnClickListener(this);
-
-        dataProvider = DemoDataProvider.newInstance();
     }
 
     @Override
