@@ -8,9 +8,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView tvLabel;
@@ -18,7 +15,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText etPassword;
     private Button btnSignIn;
     private Button btnSignUn;
-    private IDataProvider dataProvider;
+    private DemoDataProvider dataProvider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnSignIn.setOnClickListener(this);
         btnSignUn.setOnClickListener(this);
 
-        dataProvider = new DemoDataProvider();
+        dataProvider = DemoDataProvider.newInstance();
     }
 
     @Override

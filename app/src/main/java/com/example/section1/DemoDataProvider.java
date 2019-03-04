@@ -5,12 +5,25 @@ import java.util.List;
 
 public class DemoDataProvider implements IDataProvider {
 
+    private static DemoDataProvider dataProvider = new DemoDataProvider();
+
     private List<Person> personList;
 
-    public DemoDataProvider() {
+    private DemoDataProvider() {
         personList = new ArrayList<>();
         personList.add(new Person(1, "Alex", "Smit", "alex.smit@gmail.com", "AlexSmit", "qwerty123"));
         personList.add(new Person(2, "Erik", "Lass", "erik.lass@gmail.com", "ErikLass", "12345qwerty"));
+    }
+
+    public static DemoDataProvider newInstance() {
+        if (dataProvider == null) {
+            dataProvider = new DemoDataProvider();
+        }
+        return dataProvider;
+    }
+
+    public void setPersonList(List<Person> personList) {
+        this.personList = personList;
     }
 
     @Override
