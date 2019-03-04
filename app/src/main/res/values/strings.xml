@@ -5,7 +5,7 @@
     <string name="sign_in_sign_in">Войти</string>
     <string name="sign_in_sign_up">Регистрация</string>
     <string name="sign_in_success">Вы успешно авторизовались</string>
-    <string name="sign_in_error">Неверный логи или пароль</string>
+    <string name="sign_in_error">Неверный логин или пароль</string>
     <string name="sign_up_first_name">Имя</string>
     <string name="sign_up_last_name">Фамилия</string>
     <string name="sign_up_email">E-mail</string>
@@ -13,4 +13,6 @@
     <string name="sign_up_password">Пароль</string>
     <string name="sign_up_repeat_password">Повторите пароль</string>
     <string name="sign_up_sign_up">Зарегестрироваться</string>
+    <string name="sign_up_sign_up_success">Вы успешно зарегестрировались</string>
+    <string name="sign_up_sign_up_error">Регистрация неуспешна</string>
 </resources>
