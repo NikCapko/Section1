@@ -8,32 +8,36 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
-    private TextView tvLabel;
-    private EditText etLogin;
-    private EditText etPassword;
-    private Button btnSignIn;
-    private Button btnSignUn;
+public class MainActivity extends AppCompatActivity {
+
+    @BindView(R.id.tv_label)
+    TextView tvLabel;
+    @BindView(R.id.et_login)
+    EditText etLogin;
+    @BindView(R.id.et_password)
+    EditText etPassword;
+    @BindView(R.id.btn_sign_in)
+    Button btnSignIn;
+    @BindView(R.id.btn_sign_up)
+    Button btnSignUp;
+
     private DemoDataProvider dataProvider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
         dataProvider = DemoDataProvider.newInstance();
-        tvLabel = (TextView) findViewById(R.id.tv_label);
-        etLogin = (EditText) findViewById(R.id.et_login);
-        etPassword = (EditText) findViewById(R.id.et_password);
-        btnSignIn = (Button) findViewById(R.id.btn_sign_in);
-        btnSignUn = (Button) findViewById(R.id.btn_sign_up);
-        btnSignIn.setOnClickListener(this);
-        btnSignUn.setOnClickListener(this);
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
+    @OnClick({R.id.btn_sign_in, R.id.btn_sign_up})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
             case R.id.btn_sign_in:
                 if (dataProvider != null && dataProvider.getPersonList() != null && !dataProvider.getPersonList().isEmpty()) {
                     String login = etLogin.getText().toString();

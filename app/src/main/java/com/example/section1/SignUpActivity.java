@@ -2,42 +2,45 @@ package com.example.section1;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class SignUpActivity extends AppCompatActivity implements View.OnClickListener {
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
-    DemoDataProvider dataProvider;
+public class SignUpActivity extends AppCompatActivity {
 
+    @BindView(R.id.tv_label)
     TextView tvLabel;
+    @BindView(R.id.et_first_name)
     EditText etFirstName;
+    @BindView(R.id.et_last_name)
     EditText etLastName;
+    @BindView(R.id.et_email)
     EditText etEmail;
+    @BindView(R.id.et_login)
     EditText etLogin;
+    @BindView(R.id.et_password)
     EditText etPassword;
+    @BindView(R.id.et_repeat_password)
     EditText etRepeatPassword;
+    @BindView(R.id.btn_sign_up)
     Button btnSignUp;
+
+    private DemoDataProvider dataProvider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+        ButterKnife.bind(this);
         dataProvider = DemoDataProvider.newInstance();
-        tvLabel = (TextView) findViewById(R.id.tv_label);
-        etFirstName = (EditText) findViewById(R.id.et_first_name);
-        etLastName = (EditText) findViewById(R.id.et_last_name);
-        etEmail = (EditText) findViewById(R.id.et_email);
-        etLogin = (EditText) findViewById(R.id.et_login);
-        etPassword = (EditText) findViewById(R.id.et_password);
-        etRepeatPassword = (EditText) findViewById(R.id.et_repeat_password);
-        btnSignUp = (Button) findViewById(R.id.btn_sign_up);
-        btnSignUp.setOnClickListener(this);
     }
 
-    @Override
-    public void onClick(View v) {
+    @OnClick(R.id.btn_sign_up)
+    public void onViewClicked() {
         String firstName = etFirstName.getText().toString();
         String lastName = etLastName.getText().toString();
         String email = etEmail.getText().toString();
