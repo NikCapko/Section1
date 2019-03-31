@@ -1,18 +1,32 @@
-package com.example.section1.dataclasses;
+package com.example.section1.data.dataclasses;
 
-public class Person {
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
+public class UserModel implements Serializable {
+
+    @SerializedName("id")
+    @Expose
     private int id;
+    @SerializedName("firstName")
+    @Expose
     private String firstName;
+    @SerializedName("lastName")
+    @Expose
     private String lastName;
+    @SerializedName("email")
+    @Expose
     private String email;
+    @SerializedName("login")
+    @Expose
     private String login;
+    @SerializedName("password")
+    @Expose
     private String password;
 
-    public Person() {
-    }
-
-    public Person(String firstName, String lastName, String email, String login, String password) {
+    public UserModel(String firstName, String lastName, String email, String login, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -20,7 +34,7 @@ public class Person {
         this.password = password;
     }
 
-    public Person(int id, String firstName, String lastName, String email, String login, String password) {
+    public UserModel(int id, String firstName, String lastName, String email, String login, String password) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;

@@ -1,15 +1,23 @@
-package com.example.section1.dataclasses;
+package com.example.section1.data.dataclasses;
 
-public class Category {
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
+public class CategoryModel implements Serializable {
+    @SerializedName("id")
+    @Expose
     private int id;
+    @SerializedName("categoryName")
+    @Expose
     private String categoryName;
 
-    public Category(String categoryName) {
+    public CategoryModel(String categoryName) {
         this.categoryName = categoryName;
     }
 
-    public Category(int id, String categoryName) {
+    public CategoryModel(int id, String categoryName) {
         this.id = id;
         this.categoryName = categoryName;
     }

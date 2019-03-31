@@ -1,4 +1,4 @@
-package com.example.section1.categories;
+package com.example.section1.ui.categories;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,10 +8,9 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.section1.R;
-import com.example.section1.categories.adapter.CategoriesAdapter;
-import com.example.section1.data_providers.MockUpDataProvider;
-import com.example.section1.data_providers.RestDataProvider;
-import com.example.section1.dataclasses.Category;
+import com.example.section1.data.dataclasses.CategoryModel;
+import com.example.section1.ui.categories.adapter.CategoriesAdapter;
+import com.example.section1.data.data_providers.RestDataProvider;
 
 import java.util.List;
 
@@ -26,7 +25,7 @@ public class CategoriesActivity extends AppCompatActivity {
     private RestDataProvider dataProvider;
     private CategoriesAdapter categoriesAdapter;
 
-    private List<Category> categoryList;
+    private List<CategoryModel> categoryModelList;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,12 +33,12 @@ public class CategoriesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_categories);
         ButterKnife.bind(this);
         dataProvider = RestDataProvider.newInstance();
-        categoryList = dataProvider.getCategoryList();
-        setCategoryList(categoryList);
+        categoryModelList = dataProvider.getCategoryModelList();
+        setCategoryModelList(categoryModelList);
     }
 
-    private void setCategoryList(List<Category> categoryList) {
-        categoriesAdapter = new CategoriesAdapter(this, R.layout.row_categories_item, categoryList);
+    private void setCategoryModelList(List<CategoryModel> categoryModelList) {
+        categoriesAdapter = new CategoriesAdapter(this, R.layout.row_categories_item, categoryModelList);
         lvCategoriesList.setAdapter(categoriesAdapter);
         lvCategoriesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

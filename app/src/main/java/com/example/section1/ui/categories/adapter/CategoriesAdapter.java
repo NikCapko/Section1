@@ -1,4 +1,4 @@
-package com.example.section1.categories.adapter;
+package com.example.section1.ui.categories.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,19 +8,19 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.example.section1.R;
-import com.example.section1.dataclasses.Category;
+import com.example.section1.data.dataclasses.CategoryModel;
 
 import java.util.List;
 
-public class CategoriesAdapter extends ArrayAdapter<Category> {
+public class CategoriesAdapter extends ArrayAdapter<CategoryModel> {
 
     private LayoutInflater inflater;
     private int layout;
-    private List<Category> categoryList;
+    private List<CategoryModel> categoryModelList;
 
-    public CategoriesAdapter(Context context, int resource, List<Category> categoryList) {
-        super(context, resource, categoryList);
-        this.categoryList = categoryList;
+    public CategoriesAdapter(Context context, int resource, List<CategoryModel> categoryModelList) {
+        super(context, resource, categoryModelList);
+        this.categoryModelList = categoryModelList;
         this.layout = resource;
         this.inflater = LayoutInflater.from(context);
     }
@@ -30,9 +30,9 @@ public class CategoriesAdapter extends ArrayAdapter<Category> {
         View view = inflater.inflate(this.layout, parent, false);
         TextView tvCategoryName = (TextView) view.findViewById(R.id.tv_category_name);
 
-        Category category = categoryList.get(position);
+        CategoryModel categoryModel = categoryModelList.get(position);
 
-        tvCategoryName.setText(category.getCategoryName());
+        tvCategoryName.setText(categoryModel.getCategoryName());
 
         return view;
     }

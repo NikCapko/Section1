@@ -15,4 +15,5 @@
     <string name="sign_up_sign_up">Зарегестрироваться</string>
     <string name="sign_up_sign_up_success">Вы успешно зарегестрировались</string>
     <string name="sign_up_sign_up_error">Регистрация неуспешна</string>
+    <string name="http_error">Ошибка при отправке запроса</string>
 </resources>
