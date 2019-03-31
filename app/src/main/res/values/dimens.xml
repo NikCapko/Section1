@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="activity_margin_quarter">2dp</dimen>
+    <dimen name="activity_margin_fourth">4dp</dimen>
+    <dimen name="activity_margin_fourth_and_two">6dp</dimen>
+    <dimen name="activity_margin_half">8dp</dimen>
+    <dimen name="activity_margin_half_and_two">10dp</dimen>
+    <dimen name="activity_margin_half_half">12dp</dimen>
+    <dimen name="activity_margin_half_half_and_two">14dp</dimen>
+    <dimen name="activity_margin">16dp</dimen>
+    <dimen name="activity_margin_and_two">18dp</dimen>
+    <dimen name="activity_margin_and_tree">19dp</dimen>
+    <dimen name="activity_margin_double_half_fourth">20dp</dimen>
+    <dimen name="activity_margin_double_half">24dp</dimen>
+    <dimen name="activity_margin_double_half_and_fourth">28dp</dimen>
+    <dimen name="activity_margin_double">32dp</dimen>
+    <dimen name="activity_margin_double_and_fourth">36dp</dimen>
+    <dimen name="activity_margin_double_and_a_half">48dp</dimen>
+    <dimen name="activity_margin_double_and_six">54dp</dimen>
+    <dimen name="activity_margin_triple">64dp</dimen>
+    <dimen name="activity_margin_triple_and_a_half">72dp</dimen>
+
+    <dimen name="text_size_12">12dp</dimen>
+    <dimen name="text_size_13">13dp</dimen>
+    <dimen name="text_size_14">14dp</dimen>
+    <dimen name="text_size_15">15dp</dimen>
+    <dimen name="text_size_16">16dp</dimen>
+    <dimen name="text_size_17">17dp</dimen>
+    <dimen name="text_size_18">18dp</dimen>
+    <dimen name="text_size_19">19dp</dimen>
+    <dimen name="text_size_20">20dp</dimen>
+    <dimen name="text_size_21">21dp</dimen>
+    <dimen name="text_size_22">22dp</dimen>
+    <dimen name="text_size_24">24dp</dimen>
+    <dimen name="text_size_27">27dp</dimen>
+    <dimen name="text_size_30">30dp</dimen>
+    <dimen name="text_size_32">32dp</dimen>
+    <dimen name="text_size_36">36dp</dimen>
+    <dimen name="text_size_40">40dp</dimen>
+
+</resources>

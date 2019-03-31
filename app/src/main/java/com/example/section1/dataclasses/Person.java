@@ -1,4 +1,4 @@
-package com.example.section1;
+package com.example.section1.dataclasses;
 
 public class Person {
 
