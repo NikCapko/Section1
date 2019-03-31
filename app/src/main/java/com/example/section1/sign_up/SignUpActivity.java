@@ -1,10 +1,14 @@
-package com.example.section1;
+package com.example.section1.sign_up;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.example.section1.data_providers.MockUpDataProvider;
+import com.example.section1.dataclasses.Person;
+import com.example.section1.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -29,14 +33,14 @@ public class SignUpActivity extends AppCompatActivity {
     @BindView(R.id.btn_sign_up)
     Button btnSignUp;
 
-    private DemoDataProvider dataProvider;
+    private MockUpDataProvider dataProvider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
         ButterKnife.bind(this);
-        dataProvider = DemoDataProvider.newInstance();
+        dataProvider = MockUpDataProvider.newInstance();
     }
 
     @OnClick(R.id.btn_sign_up)

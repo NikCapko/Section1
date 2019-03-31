@@ -1,4 +1,4 @@
-package com.example.section1;
+package com.example.section1.sign_in;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,11 +8,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.section1.categories.CategoriesActivity;
+import com.example.section1.data_providers.MockUpDataProvider;
+import com.example.section1.dataclasses.Person;
+import com.example.section1.R;
+import com.example.section1.sign_up.SignUpActivity;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MainActivity extends AppCompatActivity {
+public class SignInActivity extends AppCompatActivity {
 
     @BindView(R.id.tv_label)
     TextView tvLabel;
@@ -25,14 +31,14 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.btn_sign_up)
     Button btnSignUp;
 
-    private DemoDataProvider dataProvider;
+    private MockUpDataProvider dataProvider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_sign_in);
         ButterKnife.bind(this);
-        dataProvider = DemoDataProvider.newInstance();
+        dataProvider = MockUpDataProvider.newInstance();
     }
 
     @OnClick({R.id.btn_sign_in, R.id.btn_sign_up})
@@ -46,7 +52,9 @@ public class MainActivity extends AppCompatActivity {
                             dataProvider.getPersonList()) {
                         if (person != null) {
                             if ((login.equals(person.getLogin()) || login.equals(person.getEmail())) && password.equals(person.getPassword())) {
-                                tvLabel.setText(this.getString(R.string.sign_in_success));
+                                //tvLabel.setText(this.getString(R.string.sign_in_success));
+                                Intent intent = new Intent(this, CategoriesActivity.class);
+                                startActivity(intent);
                                 return;
                             }
                         }

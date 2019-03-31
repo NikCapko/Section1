@@ -1,4 +1,7 @@
-package com.example.section1;
+package com.example.section1.data_providers;
+
+import com.example.section1.dataclasses.Category;
+import com.example.section1.dataclasses.Person;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,10 +25,6 @@ public class DemoDataProvider implements IDataProvider {
         return dataProvider;
     }
 
-    public void setPersonList(List<Person> personList) {
-        this.personList = personList;
-    }
-
     @Override
     public List<Person> getPersonList() {
         return personList;
@@ -33,16 +32,16 @@ public class DemoDataProvider implements IDataProvider {
 
     @Override
     public void addPerson(Person person) {
-        if (personList != null) {
-            if (!personList.isEmpty()) {
-                person.setId(personList.get(personList.size() - 1).getId() + 1);
-            } else {
-                person.setId(1);
-            }
+        if (!personList.isEmpty()) {
+            person.setId(personList.get(personList.size() - 1).getId() + 1);
         } else {
-            personList = new ArrayList<>();
             person.setId(1);
         }
         personList.add(person);
+    }
+
+    @Override
+    public List<Category> getCategoryList() {
+        return null;
     }
 }
