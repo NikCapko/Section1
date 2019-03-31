@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.section1.categories.CategoriesActivity;
 import com.example.section1.data_providers.MockUpDataProvider;
+import com.example.section1.data_providers.RestDataProvider;
 import com.example.section1.dataclasses.Person;
 import com.example.section1.R;
 import com.example.section1.sign_up.SignUpActivity;
@@ -31,14 +32,14 @@ public class SignInActivity extends AppCompatActivity {
     @BindView(R.id.btn_sign_up)
     Button btnSignUp;
 
-    private MockUpDataProvider dataProvider;
+    private RestDataProvider dataProvider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
         ButterKnife.bind(this);
-        dataProvider = MockUpDataProvider.newInstance();
+        dataProvider = RestDataProvider.newInstance();
     }
 
     @OnClick({R.id.btn_sign_in, R.id.btn_sign_up})

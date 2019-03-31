@@ -32,7 +32,7 @@ public class CategoriesAdapter extends ArrayAdapter<Category> {
 
         Category category = categoryList.get(position);
 
-        tvCategoryName.setText(category.getName());
+        tvCategoryName.setText(category.getCategoryName());
 
         return view;
     }

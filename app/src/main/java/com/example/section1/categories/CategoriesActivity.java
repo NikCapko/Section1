@@ -10,6 +10,7 @@ import android.widget.ListView;
 import com.example.section1.R;
 import com.example.section1.categories.adapter.CategoriesAdapter;
 import com.example.section1.data_providers.MockUpDataProvider;
+import com.example.section1.data_providers.RestDataProvider;
 import com.example.section1.dataclasses.Category;
 
 import java.util.List;
@@ -22,7 +23,7 @@ public class CategoriesActivity extends AppCompatActivity {
     @BindView(R.id.lv_categories_list)
     ListView lvCategoriesList;
 
-    private MockUpDataProvider dataProvider;
+    private RestDataProvider dataProvider;
     private CategoriesAdapter categoriesAdapter;
 
     private List<Category> categoryList;
@@ -32,7 +33,7 @@ public class CategoriesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_categories);
         ButterKnife.bind(this);
-        dataProvider = MockUpDataProvider.newInstance();
+        dataProvider = RestDataProvider.newInstance();
         categoryList = dataProvider.getCategoryList();
         setCategoryList(categoryList);
     }

@@ -3,15 +3,15 @@ package com.example.section1.dataclasses;
 public class Category {
 
     private int id;
-    private String name;
+    private String categoryName;
 
-    public Category(String name) {
-        this.name = name;
+    public Category(String categoryName) {
+        this.categoryName = categoryName;
     }
 
-    public Category(int id, String name) {
+    public Category(int id, String categoryName) {
         this.id = id;
-        this.name = name;
+        this.categoryName = categoryName;
     }
 
     public int getId() {
@@ -22,11 +22,11 @@ public class Category {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getCategoryName() {
+        return categoryName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 }
