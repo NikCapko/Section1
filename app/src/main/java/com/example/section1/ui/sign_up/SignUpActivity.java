@@ -21,8 +21,6 @@ import retrofit2.Response;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    @BindView(R.id.tv_label)
-    TextView tvLabel;
     @BindView(R.id.et_first_name)
     EditText etFirstName;
     @BindView(R.id.et_last_name)
@@ -66,9 +64,9 @@ public class SignUpActivity extends AppCompatActivity {
                             ResultModel resultModel = response.body();
                             if (resultModel != null) {
                                 if (resultModel.isSuccess()) {
-                                    tvLabel.setText(R.string.sign_up_sign_up_success);
+                                    //tvLabel.setText(R.string.sign_up_sign_up_success);
                                 } else {
-                                    tvLabel.setText(R.string.sign_up_sign_up_error);
+                                    //tvLabel.setText(R.string.sign_up_sign_up_error);
                                 }
                             }
                         }

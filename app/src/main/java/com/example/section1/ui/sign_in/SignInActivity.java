@@ -24,8 +24,6 @@ import retrofit2.Response;
 
 public class SignInActivity extends AppCompatActivity {
 
-    @BindView(R.id.tv_label)
-    TextView tvLabel;
     @BindView(R.id.et_login)
     EditText etLogin;
     @BindView(R.id.et_password)
@@ -58,11 +56,11 @@ public class SignInActivity extends AppCompatActivity {
                                 ResultModel resultModel = response.body();
                                 if (resultModel != null) {
                                     if (resultModel.isSuccess()) {
-                                        tvLabel.setText(getApplicationContext().getString(R.string.sign_in_success));
+                                        //tvLabel.setText(getApplicationContext().getString(R.string.sign_in_success));
                                         //Intent intent = new Intent(SignInActivity.this, CategoriesActivity.class);
                                         //startActivity(intent);
                                     } else {
-                                        tvLabel.setText(getApplicationContext().getString(R.string.sign_in_error));
+                                        //tvLabel.setText(getApplicationContext().getString(R.string.sign_in_error));
                                     }
                                 }
                             }
