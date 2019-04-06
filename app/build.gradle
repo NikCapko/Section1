@@ -51,7 +51,4 @@ dependencies {
 
     testImplementation "junit:junit:$JUNIT_VERSION"
     androidTestImplementation "com.android.support.test:runner:$TEST_RUNNER_VERSION"
-
-    testImplementation "junit:junit:$JUNIT_VERSION"
-    androidTestImplementation "com.android.support.test:runner:$TEST_RUNNER_VERSION"
 }
