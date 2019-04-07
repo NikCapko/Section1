@@ -1,11 +1,27 @@
 <resources>
-    <string name="app_name">Section1</string>
+    <string name="app_name">Market</string>
+
+    <string name="http_error">Ошибка при отправке данных</string>
+    <string name="load_error">Ошибка при отправке запроса</string>
+    <string name="repeat">Повторить</string>
+    <string name="error">Ошибка</string>
+    <string name="ok">Ок</string>
+
+    <!--Errors-->
+    <string name="message_error_connect">Отсутствует соединение с интернетом</string>
+    <string name="message_error_default">Сервер не доступен. Попробуйте позже.</string>
+    <string name="message_error_socket">Слишком медленный интернет. Попробуйте другой.</string>
+    <string name="message_technical_works">В данный момент на сервере проводятся технические работы</string>
+
+    <!-- Sign in -->
     <string name="sign_in_login">Логин</string>
     <string name="sign_in_password">Пароль</string>
     <string name="sign_in_sign_in">Войти</string>
     <string name="sign_in_sign_up">Регистрация</string>
     <string name="sign_in_success">Вы успешно авторизовались</string>
     <string name="sign_in_error">Неверный логин или пароль</string>
+
+    <!-- Sign up -->
     <string name="sign_up_first_name">Имя</string>
     <string name="sign_up_last_name">Фамилия</string>
     <string name="sign_up_email">E-mail</string>
@@ -15,5 +31,11 @@
     <string name="sign_up_sign_up">Зарегестрироваться</string>
     <string name="sign_up_sign_up_success">Вы успешно зарегестрировались</string>
     <string name="sign_up_sign_up_error">Регистрация неуспешна</string>
-    <string name="http_error">Ошибка при отправке запроса</string>
+
+    <!-- Product detail -->
+    <string name="product_name">Название</string>
+    <string name="product_price">Цена</string>
+    <string name="product_count">Количество</string>
+    <string name="product_more_detail">Подробнее</string>
+
 </resources>

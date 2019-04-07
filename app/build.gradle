@@ -34,6 +34,7 @@ dependencies {
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "com.android.support:appcompat-v7:$SUPPORT_COMPAT"
+    implementation "com.android.support:design:$SUPPORT_COMPAT"
     implementation "com.android.support.constraint:constraint-layout:$CONSTRAINT_VERSION"
 
     //butterknife

@@ -1,33 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <android.support.v7.widget.AppCompatEditText
-        android:id="@+id/et_login"
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/til_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/activity_margin"
-        android:layout_marginTop="@dimen/activity_margin_double_half_fourth"
-        android:layout_marginRight="@dimen/activity_margin"
-        android:hint="@string/sign_in_login" />
+        android:layout_marginLeft="@dimen/activity_margin_double_and_fourth"
+        android:layout_marginTop="@dimen/activity_margin_double"
+        android:layout_marginRight="@dimen/activity_margin_double_and_fourth">
 
-    <android.support.v7.widget.AppCompatEditText
-        android:id="@+id/et_password"
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/et_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/sign_in_login"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:maxLength="64"
+            android:nextFocusForward="@+id/et_password"
+            android:paddingBottom="@dimen/activity_margin_half_half"
+            android:textSize="@dimen/text_size_16" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/til_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/activity_margin"
-        android:layout_marginRight="@dimen/activity_margin"
-        android:hint="@string/sign_in_password"
-        android:inputType="textPassword" />
+        android:layout_marginLeft="@dimen/activity_margin_double_and_fourth"
+        android:layout_marginTop="@dimen/activity_margin"
+        android:layout_marginRight="@dimen/activity_margin_double_and_fourth"
+        app:passwordToggleEnabled="true">
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/et_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableRight="@color/black"
+            android:hint="@string/sign_in_password"
+            android:imeOptions="actionDone"
+            android:inputType="textPassword"
+            android:paddingBottom="@dimen/activity_margin_half_half"
+            android:textSize="@dimen/text_size_16" />
+    </android.support.design.widget.TextInputLayout>
 
     <Button
         android:id="@+id/btn_sign_in"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/activity_margin_double"
-        android:layout_marginTop="@dimen/activity_margin"
+        android:layout_marginTop="@dimen/activity_margin_double_half_and_fourth"
         android:layout_marginRight="@dimen/activity_margin_double"
         android:text="@string/sign_in_sign_in" />
 
@@ -36,6 +61,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/activity_margin_double"
+        android:layout_marginTop="@dimen/activity_margin_half"
         android:layout_marginRight="@dimen/activity_margin_double"
         android:text="@string/sign_in_sign_up" />
 

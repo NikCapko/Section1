@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class UserLoginModel implements Serializable {
+public class UserLoginModel {
 
     @SerializedName("login")
     @Expose

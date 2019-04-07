@@ -7,7 +7,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class NetworkService {
     private static NetworkService mInstance;
-    private static final String BASE_URL = "http://192.168.56.1";
     private Retrofit mRetrofit;
 
     private NetworkService() {
@@ -19,7 +18,7 @@ public class NetworkService {
                 .addInterceptor(interceptor);
 
         mRetrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
+                .baseUrl(Urls.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client.build())
                 .build();

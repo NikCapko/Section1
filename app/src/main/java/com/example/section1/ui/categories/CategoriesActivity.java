@@ -9,6 +9,7 @@ import android.widget.ListView;
 
 import com.example.section1.R;
 import com.example.section1.data.dataclasses.CategoryModel;
+import com.example.section1.routing.Router;
 import com.example.section1.ui.categories.adapter.CategoriesAdapter;
 import com.example.section1.data.data_providers.RestDataProvider;
 
@@ -38,13 +39,9 @@ public class CategoriesActivity extends AppCompatActivity {
     }
 
     private void setCategoryModelList(List<CategoryModel> categoryModelList) {
-        categoriesAdapter = new CategoriesAdapter(this, R.layout.row_categories_item, categoryModelList);
+        categoriesAdapter = new CategoriesAdapter(this, R.layout.row_categories_item);
+        categoriesAdapter.setData(categoryModelList);
+        categoriesAdapter.setOnClickListener(categoryId -> Router.openProductListScreen(CategoriesActivity.this, categoryId));
         lvCategoriesList.setAdapter(categoriesAdapter);
-        lvCategoriesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-            }
-        });
     }
 }

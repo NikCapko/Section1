@@ -14,26 +14,42 @@ import java.util.List;
 
 public class CategoriesAdapter extends ArrayAdapter<CategoryModel> {
 
-    private LayoutInflater inflater;
+    private Context context;
     private int layout;
     private List<CategoryModel> categoryModelList;
+    private OnClickListener onClickListener;
 
-    public CategoriesAdapter(Context context, int resource, List<CategoryModel> categoryModelList) {
-        super(context, resource, categoryModelList);
+    public CategoriesAdapter(Context context, int layout) {
+        super(context, layout);
+        this.context = context;
+        this.layout = layout;
+    }
+
+    public void setData(List<CategoryModel> categoryModelList) {
         this.categoryModelList = categoryModelList;
-        this.layout = resource;
-        this.inflater = LayoutInflater.from(context);
+        notifyDataSetChanged();
+    }
+
+    public void setOnClickListener(OnClickListener onClickListener) {
+        this.onClickListener = onClickListener;
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
-
-        View view = inflater.inflate(this.layout, parent, false);
-        TextView tvCategoryName = (TextView) view.findViewById(R.id.tv_category_name);
-
+        View view = LayoutInflater.from(context).inflate(layout, parent, false);
+        TextView tvCategoryName = view.findViewById(R.id.tv_category_name);
         CategoryModel categoryModel = categoryModelList.get(position);
-
-        tvCategoryName.setText(categoryModel.getCategoryName());
-
+        if (categoryModel != null) {
+            tvCategoryName.setText(categoryModel.getCategoryName());
+            view.setOnClickListener(v -> {
+                if (onClickListener != null) {
+                    onClickListener.onItemClick(categoryModel.getId());
+                }
+            });
+        }
         return view;
+    }
+
+    public interface OnClickListener {
+        void onItemClick(int id);
     }
 }

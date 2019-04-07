@@ -29,25 +29,10 @@ public class RestDataProvider implements IDataProvider {
 
     @Override
     public List<CategoryModel> getCategoryModelList() {
-        if (categoryModelList.isEmpty()) {
-            fillCategoryList();
-        }
         return categoryModelList;
     }
 
-    private void fillCategoryList() {
-        NetworkService.getInstance()
-                .getNetworkApi()
-                .getCategories()
-                .enqueue(new Callback<List<CategoryModel>>() {
-                    @Override
-                    public void onResponse(Call<List<CategoryModel>> call, Response<List<CategoryModel>> response) {
-                        categoryModelList = response.body();
-                    }
-
-                    @Override
-                    public void onFailure(Call<List<CategoryModel>> call, Throwable t) {
-                    }
-                });
+    public void setCategoryModelList(List<CategoryModel> categoryModelList) {
+        this.categoryModelList = categoryModelList;
     }
 }

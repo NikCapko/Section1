@@ -4,11 +4,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.section1.R;
-import com.example.section1.data.dataclasses.ResultModel;
+import com.example.section1.data.dataclasses.BaseModel;
 import com.example.section1.data.dataclasses.UserModel;
 import com.example.section1.net.NetworkService;
 
@@ -58,21 +57,17 @@ public class SignUpActivity extends AppCompatActivity {
             NetworkService.getInstance()
                     .getNetworkApi()
                     .authRegistration(userModel)
-                    .enqueue(new Callback<ResultModel>() {
+                    .enqueue(new Callback<BaseModel>() {
                         @Override
-                        public void onResponse(Call<ResultModel> call, Response<ResultModel> response) {
-                            ResultModel resultModel = response.body();
-                            if (resultModel != null) {
-                                if (resultModel.isSuccess()) {
-                                    //tvLabel.setText(R.string.sign_up_sign_up_success);
-                                } else {
-                                    //tvLabel.setText(R.string.sign_up_sign_up_error);
-                                }
+                        public void onResponse(Call<BaseModel> call, Response<BaseModel> response) {
+                            BaseModel baseModel = response.body();
+                            if (baseModel != null && baseModel.getStatusModel() != null) {
+
                             }
                         }
 
                         @Override
-                        public void onFailure(Call<ResultModel> call, Throwable t) {
+                        public void onFailure(Call<BaseModel> call, Throwable t) {
                             Toast.makeText(getApplicationContext(), R.string.http_error, Toast.LENGTH_LONG).show();
                         }
                     });

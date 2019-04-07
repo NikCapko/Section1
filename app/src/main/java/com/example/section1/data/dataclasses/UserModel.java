@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class UserModel implements Serializable {
+public class UserModel {
 
     @SerializedName("id")
     @Expose
@@ -27,15 +27,6 @@ public class UserModel implements Serializable {
     private String password;
 
     public UserModel(String firstName, String lastName, String email, String login, String password) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.login = login;
-        this.password = password;
-    }
-
-    public UserModel(int id, String firstName, String lastName, String email, String login, String password) {
-        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;

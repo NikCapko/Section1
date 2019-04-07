@@ -5,22 +5,14 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class CategoryModel implements Serializable {
+public class CategoryModel {
+
     @SerializedName("id")
     @Expose
     private int id;
     @SerializedName("categoryName")
     @Expose
     private String categoryName;
-
-    public CategoryModel(String categoryName) {
-        this.categoryName = categoryName;
-    }
-
-    public CategoryModel(int id, String categoryName) {
-        this.id = id;
-        this.categoryName = categoryName;
-    }
 
     public int getId() {
         return id;
