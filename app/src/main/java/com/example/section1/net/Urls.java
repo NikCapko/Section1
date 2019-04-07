@@ -2,7 +2,7 @@ package com.example.section1.net;
 
 public class Urls {
 
-    public static final String BASE_URL = "http://1229.644.563";
+    public static final String BASE_URL = "http://192.168.57.1:3000";
 
     public static final String LOGIN = "/auth/login";
     public static final String REGISTRATION = "/auth/registration";

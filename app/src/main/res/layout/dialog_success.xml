@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="@dimen/activity_margin"
+        android:src="@drawable/ic_success" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_margin_double"
+        android:text="@string/success"
+        android:textColor="@color/green"
+        android:textSize="@dimen/text_size_24" />
+
+    <TextView
+        android:id="@+id/tv_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_margin"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_16"
+        tools:text="Произошла ошибка" />
+
+    <Button
+        android:id="@+id/btn_ok"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_margin_double"
+        android:layout_marginTop="@dimen/activity_margin_double"
+        android:layout_marginRight="@dimen/activity_margin_double"
+        android:layout_marginBottom="@dimen/activity_margin_double"
+        android:background="@drawable/shape_blue_button"
+        android:text="@string/ok"
+        android:textColor="@color/white" />
+</LinearLayout>

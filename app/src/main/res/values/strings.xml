@@ -5,6 +5,8 @@
     <string name="load_error">Ошибка при отправке запроса</string>
     <string name="repeat">Повторить</string>
     <string name="error">Ошибка</string>
+    <string name="attention">Внимание</string>
+    <string name="success">Готово</string>
     <string name="ok">Ок</string>
 
     <!--Errors-->
@@ -29,8 +31,10 @@
     <string name="sign_up_password">Пароль</string>
     <string name="sign_up_repeat_password">Повторите пароль</string>
     <string name="sign_up_sign_up">Зарегестрироваться</string>
-    <string name="sign_up_sign_up_success">Вы успешно зарегестрировались</string>
-    <string name="sign_up_sign_up_error">Регистрация неуспешна</string>
+    <string name="sign_up_sign_up_success">Вы успешно зарегестрированы</string>
+    <string name="sign_up_password_error">Введенные пароли не совпадают</string>
+    <string name="sign_up_login_error">Введенный логин уже зарегестрирован</string>
+    <string name="sign_up_email_error">Введенный email уже зарегестрирован</string>
 
     <!-- Product detail -->
     <string name="product_name">Название</string>

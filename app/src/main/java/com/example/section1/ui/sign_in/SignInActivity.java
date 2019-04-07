@@ -1,14 +1,12 @@
 package com.example.section1.ui.sign_in;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.section1.R;
 import com.example.section1.data.dataclasses.BaseModel;
@@ -18,8 +16,7 @@ import com.example.section1.dialogs.ErrorDialog;
 import com.example.section1.net.ErrorData;
 import com.example.section1.net.NetworkService;
 import com.example.section1.routing.Router;
-import com.example.section1.ui.sign_up.SignUpActivity;
-import com.example.section1.utils.Costants;
+import com.example.section1.utils.Constants;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -68,13 +65,13 @@ public class SignInActivity extends AppCompatActivity {
                                 BaseModel baseModel = response.body();
                                 if (baseModel != null && baseModel.getStatusModel() != null) {
                                     StatusModel statusModel = baseModel.getStatusModel();
-                                    if (statusModel.getCode().equals(Costants.RESPONSE_200)) {
+                                    if (statusModel.getCode().equals(Constants.RESPONSE_200)) {
                                         Router.openCategoriesScreen(SignInActivity.this);
                                         finish();
+                                    } else if (statusModel.getCode().equals(Constants.RESPONSE_401)) {
+                                        tilLogin.setError(getApplicationContext().getString(R.string.sign_in_error));
+                                        tilPassword.setError(getApplicationContext().getString(R.string.sign_in_error));
                                     }
-                                } else {
-                                    tilLogin.setError(getApplicationContext().getString(R.string.sign_in_error));
-                                    tilPassword.setError(getApplicationContext().getString(R.string.sign_in_error));
                                 }
                             }
 
@@ -102,13 +99,10 @@ public class SignInActivity extends AppCompatActivity {
             errorDialog = null;
         }
         errorDialog = ErrorDialog.newInstance(errorMessage);
-        errorDialog.setOnResultListener(new ErrorDialog.OnDialogResultListener() {
-            @Override
-            public void onResultDialog(int statusCode) {
-                if (statusCode == Activity.RESULT_OK) {
-                    if (errorDialog != null) {
-                        errorDialog.dismiss();
-                    }
+        errorDialog.setOnResultListener(statusCode -> {
+            if (statusCode == Activity.RESULT_OK) {
+                if (errorDialog != null) {
+                    errorDialog.dismiss();
                 }
             }
         });
