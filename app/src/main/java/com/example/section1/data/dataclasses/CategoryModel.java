@@ -10,9 +10,9 @@ public class CategoryModel {
     @SerializedName("id")
     @Expose
     private int id;
-    @SerializedName("categoryName")
+    @SerializedName("name")
     @Expose
-    private String categoryName;
+    private String name;
 
     public int getId() {
         return id;
@@ -22,11 +22,11 @@ public class CategoryModel {
         this.id = id;
     }
 
-    public String getCategoryName() {
-        return categoryName;
+    public String getName() {
+        return name;
     }
 
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
+    public void setName(String name) {
+        this.name = name;
     }
 }

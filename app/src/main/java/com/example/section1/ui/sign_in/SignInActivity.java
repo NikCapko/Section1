@@ -13,6 +13,7 @@ import com.example.section1.data.dataclasses.BaseModel;
 import com.example.section1.data.dataclasses.StatusModel;
 import com.example.section1.data.dataclasses.UserLoginModel;
 import com.example.section1.dialogs.ErrorDialog;
+import com.example.section1.dialogs.ProgressDialog;
 import com.example.section1.net.ErrorData;
 import com.example.section1.net.NetworkService;
 import com.example.section1.routing.Router;
@@ -41,6 +42,7 @@ public class SignInActivity extends AppCompatActivity {
     Button btnSignUp;
 
     private ErrorDialog errorDialog;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +58,7 @@ public class SignInActivity extends AppCompatActivity {
                 String login = etLogin.getText().toString();
                 String password = etPassword.getText().toString();
                 UserLoginModel userLoginModel = new UserLoginModel(login, password);
+                showProgressDialog();
                 NetworkService.getInstance()
                         .getNetworkApi()
                         .authLogin(userLoginModel)
@@ -73,10 +76,12 @@ public class SignInActivity extends AppCompatActivity {
                                         tilPassword.setError(getApplicationContext().getString(R.string.sign_in_error));
                                     }
                                 }
+                                hideProgressDialog();
                             }
 
                             @Override
                             public void onFailure(Call<BaseModel> call, Throwable t) {
+                                hideProgressDialog();
                                 ErrorData errorData = new ErrorData(getApplicationContext(), t);
                                 showError(errorData.getErrorMessage());
                             }
@@ -107,5 +112,19 @@ public class SignInActivity extends AppCompatActivity {
             }
         });
         errorDialog.show(this.getSupportFragmentManager(), ErrorDialog.TAG);
+    }
+
+    private void showProgressDialog() {
+        if (progressDialog != null) {
+            progressDialog = null;
+        }
+        progressDialog = ProgressDialog.newInstance();
+        progressDialog.show(this.getSupportFragmentManager(), ProgressDialog.TAG);
+    }
+
+    private void hideProgressDialog() {
+        if (progressDialog != null) {
+            progressDialog.dismiss();
+        }
     }
 }

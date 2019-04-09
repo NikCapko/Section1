@@ -39,7 +39,7 @@ public class CategoriesAdapter extends ArrayAdapter<CategoryModel> {
         TextView tvCategoryName = view.findViewById(R.id.tv_category_name);
         CategoryModel categoryModel = categoryModelList.get(position);
         if (categoryModel != null) {
-            tvCategoryName.setText(categoryModel.getCategoryName());
+            tvCategoryName.setText(categoryModel.getName());
             view.setOnClickListener(v -> {
                 if (onClickListener != null) {
                     onClickListener.onItemClick(categoryModel.getId());

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/shape_message_drawable"
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
@@ -23,9 +24,12 @@
 
     <TextView
         android:id="@+id/tv_description"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_margin_double_half_fourth"
         android:layout_marginTop="@dimen/activity_margin"
+        android:layout_marginRight="@dimen/activity_margin_double_half_fourth"
+        android:gravity="center"
         android:textColor="@color/black"
         android:textSize="@dimen/text_size_16"
         tools:text="Произошла ошибка" />
