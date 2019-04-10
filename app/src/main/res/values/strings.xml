@@ -16,6 +16,7 @@
     <string name="message_technical_works">В данный момент на сервере проводятся технические работы</string>
 
     <!-- Sign in -->
+    <string name="sign_in_screen_title">Вход</string>
     <string name="sign_in_login">Логин</string>
     <string name="sign_in_password">Пароль</string>
     <string name="sign_in_sign_in">Войти</string>
@@ -24,6 +25,7 @@
     <string name="sign_in_error">Неверный логин или пароль</string>
 
     <!-- Sign up -->
+    <string name="sign_up_screen_title">Регистрация</string>
     <string name="sign_up_first_name">Имя</string>
     <string name="sign_up_last_name">Фамилия</string>
     <string name="sign_up_email">E-mail</string>
@@ -35,6 +37,12 @@
     <string name="sign_up_password_error">Введенные пароли не совпадают</string>
     <string name="sign_up_login_error">Введенный логин уже зарегестрирован</string>
     <string name="sign_up_email_error">Введенный email уже зарегестрирован</string>
+
+    <!-- Category -->
+    <string name="category_screen_title">Категории</string>
+
+    <!-- Product list -->
+    <string name="product_list_screen_title">Продукты</string>
 
     <!-- Product detail -->
     <string name="product_name">Название</string>

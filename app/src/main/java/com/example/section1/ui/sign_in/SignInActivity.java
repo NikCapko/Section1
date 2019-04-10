@@ -49,6 +49,39 @@ public class SignInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
         ButterKnife.bind(this);
+        setTitle(R.string.sign_in_screen_title);
+    }
+
+    private void makeSignInRequest(UserLoginModel userLoginModel) {
+        showProgressDialog();
+        NetworkService.getInstance()
+                .getNetworkApi()
+                .authLogin(userLoginModel)
+                .enqueue(new Callback<BaseModel>() {
+                    @Override
+                    public void onResponse(Call<BaseModel> call, Response<BaseModel> response) {
+                        BaseModel baseModel = response.body();
+                        if (baseModel != null && baseModel.getStatusModel() != null) {
+                            StatusModel statusModel = baseModel.getStatusModel();
+                            if (statusModel.getCode().equals(Constants.RESPONSE_200)) {
+                                hideProgressDialog();
+                                Router.openCategoriesScreen(SignInActivity.this);
+                                finish();
+                            } else if (statusModel.getCode().equals(Constants.RESPONSE_401)) {
+                                tilLogin.setError(getApplicationContext().getString(R.string.sign_in_error));
+                                tilPassword.setError(getApplicationContext().getString(R.string.sign_in_error));
+                            }
+                        }
+                        hideProgressDialog();
+                    }
+
+                    @Override
+                    public void onFailure(Call<BaseModel> call, Throwable t) {
+                        hideProgressDialog();
+                        ErrorData errorData = new ErrorData(getApplicationContext(), t);
+                        showError(errorData.getErrorMessage());
+                    }
+                });
     }
 
     @OnClick({R.id.btn_sign_in, R.id.btn_sign_up})
@@ -58,34 +91,7 @@ public class SignInActivity extends AppCompatActivity {
                 String login = etLogin.getText().toString();
                 String password = etPassword.getText().toString();
                 UserLoginModel userLoginModel = new UserLoginModel(login, password);
-                showProgressDialog();
-                NetworkService.getInstance()
-                        .getNetworkApi()
-                        .authLogin(userLoginModel)
-                        .enqueue(new Callback<BaseModel>() {
-                            @Override
-                            public void onResponse(Call<BaseModel> call, Response<BaseModel> response) {
-                                BaseModel baseModel = response.body();
-                                if (baseModel != null && baseModel.getStatusModel() != null) {
-                                    StatusModel statusModel = baseModel.getStatusModel();
-                                    if (statusModel.getCode().equals(Constants.RESPONSE_200)) {
-                                        Router.openCategoriesScreen(SignInActivity.this);
-                                        finish();
-                                    } else if (statusModel.getCode().equals(Constants.RESPONSE_401)) {
-                                        tilLogin.setError(getApplicationContext().getString(R.string.sign_in_error));
-                                        tilPassword.setError(getApplicationContext().getString(R.string.sign_in_error));
-                                    }
-                                }
-                                hideProgressDialog();
-                            }
-
-                            @Override
-                            public void onFailure(Call<BaseModel> call, Throwable t) {
-                                hideProgressDialog();
-                                ErrorData errorData = new ErrorData(getApplicationContext(), t);
-                                showError(errorData.getErrorMessage());
-                            }
-                        });
+                makeSignInRequest(userLoginModel);
                 break;
             case R.id.btn_sign_up:
                 cleanFields();

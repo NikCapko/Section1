@@ -19,15 +19,11 @@ public class CategoriesAdapter extends ArrayAdapter<CategoryModel> {
     private List<CategoryModel> categoryModelList;
     private OnClickListener onClickListener;
 
-    public CategoriesAdapter(Context context, int layout) {
-        super(context, layout);
+    public CategoriesAdapter(Context context, int layout, List<CategoryModel> categoryModelList) {
+        super(context, layout, categoryModelList);
         this.context = context;
         this.layout = layout;
-    }
-
-    public void setData(List<CategoryModel> categoryModelList) {
         this.categoryModelList = categoryModelList;
-        notifyDataSetChanged();
     }
 
     public void setOnClickListener(OnClickListener onClickListener) {

@@ -45,6 +45,11 @@ public class CategoriesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_categories);
         ButterKnife.bind(this);
+        setTitle(R.string.category_screen_title);
+        makeCategoryRequest();
+    }
+
+    private void makeCategoryRequest() {
         NetworkService.getInstance()
                 .getNetworkApi()
                 .getCategories()
@@ -70,10 +75,9 @@ public class CategoriesActivity extends AppCompatActivity {
     }
 
     private void setCategoryModelList(List<CategoryModel> categoryModelList) {
-        categoriesAdapter = new CategoriesAdapter(this, R.layout.row_categories_item);
-        categoriesAdapter.setData(categoryModelList);
-        categoriesAdapter.setOnClickListener(categoryId -> Router.openProductListScreen(CategoriesActivity.this, categoryId));
+        categoriesAdapter = new CategoriesAdapter(getApplicationContext(), R.layout.row_categories_item, categoryModelList);
         lvCategoriesList.setAdapter(categoriesAdapter);
+        categoriesAdapter.setOnClickListener(categoryId -> Router.openProductListScreen(CategoriesActivity.this, categoryId));
     }
 
     private void showError(String errorMessage) {

@@ -5,138 +5,153 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/til_first_name"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/activity_margin_double_and_fourth"
-        android:layout_marginTop="@dimen/activity_margin_double"
-        android:layout_marginRight="@dimen/activity_margin_double_and_fourth">
+        android:fillViewport="true"
+        android:overScrollMode="never">
 
-        <android.support.v7.widget.AppCompatEditText
-            android:id="@+id/et_first_name"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/sign_up_first_name"
-            android:imeOptions="actionNext"
-            android:inputType="text"
-            android:nextFocusForward="@+id/et_last_name"
-            android:paddingBottom="@dimen/activity_margin_half_half"
-            android:textSize="@dimen/text_size_16" />
-    </android.support.design.widget.TextInputLayout>
+            android:focusable="false"
+            android:focusableInTouchMode="true"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/til_last_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/til_first_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_margin_double_and_fourth"
+                android:layout_marginTop="@dimen/activity_margin_double"
+                android:layout_marginRight="@dimen/activity_margin_double_and_fourth">
 
-        android:layout_marginLeft="@dimen/activity_margin_double_and_fourth"
-        android:layout_marginTop="@dimen/activity_margin_half"
-        android:layout_marginRight="@dimen/activity_margin_double_and_fourth">
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/et_first_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/sign_up_first_name"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:nextFocusForward="@+id/et_last_name"
+                    android:paddingBottom="@dimen/activity_margin_half_half"
+                    android:textSize="@dimen/text_size_16" />
+            </android.support.design.widget.TextInputLayout>
 
-        <android.support.v7.widget.AppCompatEditText
-            android:id="@+id/et_last_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/sign_up_last_name"
-            android:imeOptions="actionNext"
-            android:inputType="text"
-            android:nextFocusForward="@+id/et_email"
-            android:paddingBottom="@dimen/activity_margin_half_half"
-            android:textSize="@dimen/text_size_16" />
-    </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/til_last_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/til_email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/activity_margin_double_and_fourth"
-        android:layout_marginTop="@dimen/activity_margin_half"
-        android:layout_marginRight="@dimen/activity_margin_double_and_fourth">
+                android:layout_marginLeft="@dimen/activity_margin_double_and_fourth"
+                android:layout_marginTop="@dimen/activity_margin_half"
+                android:layout_marginRight="@dimen/activity_margin_double_and_fourth">
 
-        <android.support.v7.widget.AppCompatEditText
-            android:id="@+id/et_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/sign_up_email"
-            android:imeOptions="actionNext"
-            android:inputType="textEmailAddress"
-            android:nextFocusForward="@+id/et_login"
-            android:paddingBottom="@dimen/activity_margin_half_half"
-            android:textSize="@dimen/text_size_16" />
-    </android.support.design.widget.TextInputLayout>
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/et_last_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/sign_up_last_name"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:nextFocusForward="@+id/et_email"
+                    android:paddingBottom="@dimen/activity_margin_half_half"
+                    android:textSize="@dimen/text_size_16" />
+            </android.support.design.widget.TextInputLayout>
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/til_login"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/activity_margin_double_and_fourth"
-        android:layout_marginTop="@dimen/activity_margin_half"
-        android:layout_marginRight="@dimen/activity_margin_double_and_fourth">
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/til_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_margin_double_and_fourth"
+                android:layout_marginTop="@dimen/activity_margin_half"
+                android:layout_marginRight="@dimen/activity_margin_double_and_fourth">
 
-        <android.support.v7.widget.AppCompatEditText
-            android:id="@+id/et_login"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/sign_up_login"
-            android:imeOptions="actionNext"
-            android:inputType="text"
-            android:nextFocusForward="@+id/et_password"
-            android:paddingBottom="@dimen/activity_margin_half_half"
-            android:textSize="@dimen/text_size_16" />
-    </android.support.design.widget.TextInputLayout>
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/et_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/sign_up_email"
+                    android:imeOptions="actionNext"
+                    android:inputType="textEmailAddress"
+                    android:nextFocusForward="@+id/et_login"
+                    android:paddingBottom="@dimen/activity_margin_half_half"
+                    android:textSize="@dimen/text_size_16" />
+            </android.support.design.widget.TextInputLayout>
 
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/til_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_margin_double_and_fourth"
+                android:layout_marginTop="@dimen/activity_margin_half"
+                android:layout_marginRight="@dimen/activity_margin_double_and_fourth">
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/til_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/activity_margin_double_and_fourth"
-        android:layout_marginTop="@dimen/activity_margin_half"
-        android:layout_marginRight="@dimen/activity_margin_double_and_fourth"
-        app:passwordToggleEnabled="true">
-
-        <android.support.v7.widget.AppCompatEditText
-            android:id="@+id/et_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/sign_up_password"
-            android:imeOptions="actionNext"
-            android:inputType="textPassword"
-            android:nextFocusForward="@+id/et_repeat_password"
-            android:paddingBottom="@dimen/activity_margin_half_half"
-            android:textSize="@dimen/text_size_16" />
-    </android.support.design.widget.TextInputLayout>
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/et_login"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/sign_up_login"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:nextFocusForward="@+id/et_password"
+                    android:paddingBottom="@dimen/activity_margin_half_half"
+                    android:textSize="@dimen/text_size_16" />
+            </android.support.design.widget.TextInputLayout>
 
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/til_repeat_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/activity_margin_double_and_fourth"
-        android:layout_marginTop="@dimen/activity_margin_half"
-        android:layout_marginRight="@dimen/activity_margin_double_and_fourth"
-        app:passwordToggleEnabled="true">
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/til_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_margin_double_and_fourth"
+                android:layout_marginTop="@dimen/activity_margin_half"
+                android:layout_marginRight="@dimen/activity_margin_double_and_fourth"
+                app:passwordToggleEnabled="true">
 
-        <android.support.v7.widget.AppCompatEditText
-            android:id="@+id/et_repeat_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/sign_up_repeat_password"
-            android:imeOptions="actionDone"
-            android:inputType="textPassword"
-            android:paddingBottom="@dimen/activity_margin_half_half"
-            android:textSize="@dimen/text_size_16" />
-    </android.support.design.widget.TextInputLayout>
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/et_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/sign_up_password"
+                    android:imeOptions="actionNext"
+                    android:inputType="textPassword"
+                    android:nextFocusForward="@+id/et_repeat_password"
+                    android:paddingBottom="@dimen/activity_margin_half_half"
+                    android:textSize="@dimen/text_size_16" />
+            </android.support.design.widget.TextInputLayout>
 
 
-    <Button
-        android:id="@+id/btn_sign_up"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/activity_margin_double"
-        android:layout_marginTop="@dimen/activity_margin"
-        android:layout_marginRight="@dimen/activity_margin_double"
-        android:text="@string/sign_up_sign_up" />
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/til_repeat_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_margin_double_and_fourth"
+                android:layout_marginTop="@dimen/activity_margin_half"
+                android:layout_marginRight="@dimen/activity_margin_double_and_fourth"
+                app:passwordToggleEnabled="true">
 
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/et_repeat_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/sign_up_repeat_password"
+                    android:imeOptions="actionDone"
+                    android:inputType="textPassword"
+                    android:paddingBottom="@dimen/activity_margin_half_half"
+                    android:textSize="@dimen/text_size_16" />
+            </android.support.design.widget.TextInputLayout>
+
+
+            <Button
+                android:id="@+id/btn_sign_up"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_margin_double"
+                android:layout_marginTop="@dimen/activity_margin"
+                android:layout_marginRight="@dimen/activity_margin_double"
+                android:layout_marginBottom="@dimen/activity_margin"
+                android:text="@string/sign_up_sign_up" />
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

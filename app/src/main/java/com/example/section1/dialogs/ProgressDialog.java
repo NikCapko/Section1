@@ -1,9 +1,9 @@
 package com.example.section1.dialogs;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -22,11 +22,9 @@ public class ProgressDialog extends DialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.dialog_progress, null);
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        android.support.v7.app.AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.Theme_Dialog);
         builder.setView(view);
-        Dialog dialog = builder.create();
-        dialog.setCanceledOnTouchOutside(false);
-        setCancelable(false);
-        return dialog;
+
+        return builder.create();
     }
 }

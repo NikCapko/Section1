@@ -4,14 +4,17 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toolbar;
 
 import com.example.section1.R;
 import com.example.section1.data.dataclasses.BaseModel;
 import com.example.section1.data.dataclasses.StatusModel;
 import com.example.section1.data.dataclasses.UserModel;
 import com.example.section1.dialogs.ErrorDialog;
+import com.example.section1.dialogs.ProgressDialog;
 import com.example.section1.dialogs.SuccessDialog;
 import com.example.section1.net.ErrorData;
 import com.example.section1.net.NetworkService;
@@ -55,12 +58,21 @@ public class SignUpActivity extends AppCompatActivity {
 
     private ErrorDialog errorDialog;
     private SuccessDialog successDialog;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
         ButterKnife.bind(this);
+        setTitle(R.string.sign_up_screen_title);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
     }
 
     @OnClick(R.id.btn_sign_up)
@@ -82,40 +94,47 @@ public class SignUpActivity extends AppCompatActivity {
                 && !repeatPassword.isEmpty()) {
             if (password.equals(repeatPassword)) {
                 UserModel userModel = new UserModel(firstName, lastName, email, login, password);
-                NetworkService.getInstance()
-                        .getNetworkApi()
-                        .authRegistration(userModel)
-                        .enqueue(new Callback<BaseModel>() {
-                            @Override
-                            public void onResponse(Call<BaseModel> call, Response<BaseModel> response) {
-                                BaseModel baseModel = response.body();
-                                if (baseModel != null && baseModel.getStatusModel() != null) {
-                                    StatusModel statusModel = baseModel.getStatusModel();
-                                    switch (statusModel.getCode()) {
-                                        case Constants.RESPONSE_200:
-                                            showSuccess();
-                                            break;
-                                        case Constants.RESPONSE_310:
-                                            tilLogin.setError(getApplicationContext().getString(R.string.sign_up_login_error));
-                                            break;
-                                        case Constants.RESPONSE_311:
-                                            tilEmail.setError(getApplicationContext().getString(R.string.sign_up_email_error));
-                                            break;
-                                    }
-                                }
-                            }
-
-                            @Override
-                            public void onFailure(Call<BaseModel> call, Throwable t) {
-                                ErrorData errorData = new ErrorData(getApplicationContext(), t);
-                                showError(errorData.getErrorMessage());
-                            }
-                        });
+                makeSignUpRequest(userModel);
             } else {
                 tilPassword.setError(getApplicationContext().getString(R.string.sign_up_password_error));
                 tilRepeatPassword.setError(getApplicationContext().getString(R.string.sign_up_password_error));
             }
         }
+    }
+
+    private void makeSignUpRequest(UserModel userModel) {
+        showProgressDialog();
+        NetworkService.getInstance()
+                .getNetworkApi()
+                .authRegistration(userModel)
+                .enqueue(new Callback<BaseModel>() {
+                    @Override
+                    public void onResponse(Call<BaseModel> call, Response<BaseModel> response) {
+                        BaseModel baseModel = response.body();
+                        if (baseModel != null && baseModel.getStatusModel() != null) {
+                            StatusModel statusModel = baseModel.getStatusModel();
+                            switch (statusModel.getCode()) {
+                                case Constants.RESPONSE_200:
+                                    showSuccess();
+                                    break;
+                                case Constants.RESPONSE_310:
+                                    tilLogin.setError(getApplicationContext().getString(R.string.sign_up_login_error));
+                                    break;
+                                case Constants.RESPONSE_311:
+                                    tilEmail.setError(getApplicationContext().getString(R.string.sign_up_email_error));
+                                    break;
+                            }
+                        }
+                        hideProgressDialog();
+                    }
+
+                    @Override
+                    public void onFailure(Call<BaseModel> call, Throwable t) {
+                        hideProgressDialog();
+                        ErrorData errorData = new ErrorData(getApplicationContext(), t);
+                        showError(errorData.getErrorMessage());
+                    }
+                });
     }
 
     private void showSuccess() {
@@ -131,7 +150,7 @@ public class SignUpActivity extends AppCompatActivity {
                 }
             }
         });
-        successDialog.show(this.getSupportFragmentManager(), ErrorDialog.TAG);
+        successDialog.show(this.getSupportFragmentManager(), SuccessDialog.TAG);
     }
 
     private void showError(String errorMessage) {
@@ -147,5 +166,19 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
         errorDialog.show(this.getSupportFragmentManager(), ErrorDialog.TAG);
+    }
+
+    private void showProgressDialog() {
+        if (progressDialog != null) {
+            progressDialog = null;
+        }
+        progressDialog = ProgressDialog.newInstance();
+        progressDialog.show(this.getSupportFragmentManager(), ProgressDialog.TAG);
+    }
+
+    private void hideProgressDialog() {
+        if (progressDialog != null) {
+            progressDialog.dismiss();
+        }
     }
 }
