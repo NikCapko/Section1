@@ -9,11 +9,10 @@ public class ProductModel implements Serializable {
 
     public static final int UNSELECT_STATUS = 0;
     public static final int SELECT_STATUS = 1;
-    public static final int EMPTY_STATUS = 2;
 
     @SerializedName("id")
     @Expose
-    private String id;
+    private int id;
     @SerializedName("name")
     @Expose
     private String name;
@@ -22,22 +21,19 @@ public class ProductModel implements Serializable {
     private String price;
     @SerializedName("count")
     @Expose
-    private String count;
-    @SerializedName("url")
-    @Expose
-    private String url;
+    private int count;
     @SerializedName("status")
     @Expose
     private int status;
     @SerializedName("categoryId")
     @Expose
-    private String categoryId;
+    private int categoryId;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -57,20 +53,12 @@ public class ProductModel implements Serializable {
         this.price = price;
     }
 
-    public String getCount() {
+    public int getCount() {
         return count;
     }
 
-    public void setCount(String count) {
+    public void setCount(int count) {
         this.count = count;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
     }
 
     public int getStatus() {
@@ -81,11 +69,11 @@ public class ProductModel implements Serializable {
         this.status = status;
     }
 
-    public String getCategoryId() {
+    public int getCategoryId() {
         return categoryId;
     }
 
-    public void setCategoryId(String categoryId) {
+    public void setCategoryId(int categoryId) {
         this.categoryId = categoryId;
     }
 }

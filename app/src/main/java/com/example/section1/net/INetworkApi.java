@@ -3,6 +3,7 @@ package com.example.section1.net;
 import com.example.section1.data.dataclasses.BaseModel;
 import com.example.section1.data.dataclasses.BasketDataModel;
 import com.example.section1.data.dataclasses.CategoryDataModel;
+import com.example.section1.data.dataclasses.ChangeProductStatusDataModel;
 import com.example.section1.data.dataclasses.ProductDataModel;
 import com.example.section1.data.dataclasses.ProductDetailDataModel;
 import com.example.section1.data.dataclasses.UserLoginModel;
@@ -33,10 +34,10 @@ public interface INetworkApi {
     Call<ProductDetailDataModel> getProductDetail(@Path(RequestFields.CATEGORY_ID) String categoryId, @Path(RequestFields.PRODUCT_ID) String productId);
 
     @GET(Urls.BASKET_ADD_PRODUCT)
-    Call<BaseModel> addProduct(@Query(RequestFields.BASKET_PRODUCT_ID) String productId);
+    Call<ChangeProductStatusDataModel> addProduct(@Query(RequestFields.BASKET_PRODUCT_ID) String productId);
 
     @GET(Urls.BASKET_REMOVE_PRODUCT)
-    Call<BaseModel> removeProduct(@Query(RequestFields.BASKET_PRODUCT_ID) String productId);
+    Call<ChangeProductStatusDataModel> removeProduct(@Query(RequestFields.BASKET_PRODUCT_ID) String productId);
 
     @GET(Urls.BASKET_CHECKOUT)
     Call<BasketDataModel> basketCheckout();

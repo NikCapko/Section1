@@ -12,6 +12,10 @@ import com.example.section1.ui.sign_up.SignUpActivity;
 
 public class Router {
 
+    public static final int START_BASKET_ACTIVITY = 100;
+
+    public static final int RESULT_BASKET_ACTIVITY = 1100;
+
     public static void openSignUpScreen(Activity activity) {
         Intent intent = new Intent(activity, SignUpActivity.class);
         activity.startActivity(intent);
@@ -28,14 +32,15 @@ public class Router {
         activity.startActivity(intent);
     }
 
-    public static void openProductDetailScreen(Activity activity, int productId) {
+    public static void openProductDetailScreen(Activity activity, int categoryId, int productId) {
         Intent intent = new Intent(activity, ProductDetailActivity.class);
+        intent.putExtra(ProductDetailActivity.CATEGORY_ID, categoryId);
         intent.putExtra(ProductDetailActivity.PRODUCT_ID, productId);
         activity.startActivity(intent);
     }
 
     public static void openBasketScreen(Activity activity) {
         Intent intent = new Intent(activity, BasketActivity.class);
-        activity.startActivity(intent);
+        activity.startActivityForResult(intent, START_BASKET_ACTIVITY);
     }
 }

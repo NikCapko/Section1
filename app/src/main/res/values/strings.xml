@@ -14,6 +14,7 @@
     <string name="message_error_default">Сервер не доступен. Попробуйте позже.</string>
     <string name="message_error_socket">Слишком медленный интернет. Попробуйте другой.</string>
     <string name="message_technical_works">В данный момент на сервере проводятся технические работы</string>
+    <string name="message_universal_error">Что-то пошло не так. Попробуйте позже</string>
 
     <!-- Sign in -->
     <string name="sign_in_screen_title">Вход</string>
@@ -43,11 +44,18 @@
 
     <!-- Product list -->
     <string name="product_list_screen_title">Продукты</string>
+    <string name="product_list_empty">Список продуктов пуст</string>
 
     <!-- Product detail -->
+    <string name="product_detail_screen_title">Подробно</string>
     <string name="product_name">Название</string>
     <string name="product_price">Цена</string>
     <string name="product_count">Количество</string>
     <string name="product_more_detail">Подробнее</string>
+
+    <!-- Basket -->
+    <string name="basket_menu_item">Корзина</string>
+    <string name="basket_screen_title">Корзина</string>
+    <string name="basket_product_list_empty">Корзина пуста</string>
 
 </resources>

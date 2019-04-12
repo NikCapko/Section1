@@ -1,31 +1,32 @@
 package com.example.section1.ui.categories;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.example.section1.R;
-import com.example.section1.data.dataclasses.BaseModel;
 import com.example.section1.data.dataclasses.CategoryDataModel;
 import com.example.section1.data.dataclasses.CategoryModel;
 import com.example.section1.data.dataclasses.StatusModel;
-import com.example.section1.dialogs.ErrorDialog;
 import com.example.section1.net.ErrorData;
 import com.example.section1.net.NetworkService;
 import com.example.section1.routing.Router;
 import com.example.section1.ui.categories.adapter.CategoriesAdapter;
-import com.example.section1.data.data_providers.RestDataProvider;
-import com.example.section1.ui.sign_in.SignInActivity;
 import com.example.section1.utils.Constants;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -34,11 +35,20 @@ public class CategoriesActivity extends AppCompatActivity {
 
     @BindView(R.id.lv_categories_list)
     ListView lvCategoriesList;
+    @BindView(R.id.pb_load)
+    ProgressBar pbLoad;
+    @BindView(R.id.tv_error_title)
+    TextView tvErrorTitle;
+    @BindView(R.id.tv_description)
+    TextView tvDescription;
+    @BindView(R.id.btn_repeat)
+    Button btnRepeat;
+    @BindView(R.id.ll_error_container)
+    LinearLayout llErrorContainer;
 
     private CategoriesAdapter categoriesAdapter;
 
     private List<CategoryModel> categoryModelList;
-    private ErrorDialog errorDialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -49,7 +59,25 @@ public class CategoriesActivity extends AppCompatActivity {
         makeCategoryRequest();
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.basket_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id) {
+            case R.id.basket:
+                Router.openBasketScreen(CategoriesActivity.this);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     private void makeCategoryRequest() {
+        showProgress();
         NetworkService.getInstance()
                 .getNetworkApi()
                 .getCategories()
@@ -62,6 +90,7 @@ public class CategoriesActivity extends AppCompatActivity {
                             if (statusModel.getCode().equals(Constants.RESPONSE_200)) {
                                 categoryModelList = categoryDataModel.getCategoryModelList();
                                 setCategoryModelList(categoryModelList);
+                                completeProgress();
                             }
                         }
                     }
@@ -69,7 +98,7 @@ public class CategoriesActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(Call<CategoryDataModel> call, Throwable t) {
                         ErrorData errorData = new ErrorData(getApplicationContext(), t);
-                        showError(errorData.getErrorMessage());
+                        showErrorProgress(errorData.getErrorMessage());
                     }
                 });
     }
@@ -80,18 +109,27 @@ public class CategoriesActivity extends AppCompatActivity {
         categoriesAdapter.setOnClickListener(categoryId -> Router.openProductListScreen(CategoriesActivity.this, categoryId));
     }
 
-    private void showError(String errorMessage) {
-        if (errorDialog != null) {
-            errorDialog = null;
-        }
-        errorDialog = ErrorDialog.newInstance(errorMessage);
-        errorDialog.setOnResultListener(statusCode -> {
-            if (statusCode == Activity.RESULT_OK) {
-                if (errorDialog != null) {
-                    errorDialog.dismiss();
-                }
-            }
-        });
-        errorDialog.show(this.getSupportFragmentManager(), ErrorDialog.TAG);
+    private void showProgress() {
+        lvCategoriesList.setVisibility(View.GONE);
+        pbLoad.setVisibility(View.VISIBLE);
+        llErrorContainer.setVisibility(View.GONE);
+    }
+
+    private void completeProgress() {
+        lvCategoriesList.setVisibility(View.VISIBLE);
+        pbLoad.setVisibility(View.GONE);
+        llErrorContainer.setVisibility(View.GONE);
+    }
+
+    private void showErrorProgress(String errorMessage) {
+        lvCategoriesList.setVisibility(View.GONE);
+        pbLoad.setVisibility(View.GONE);
+        llErrorContainer.setVisibility(View.VISIBLE);
+        tvDescription.setText(errorMessage);
+    }
+
+    @OnClick(R.id.btn_repeat)
+    public void onViewClicked() {
+        makeCategoryRequest();
     }
 }

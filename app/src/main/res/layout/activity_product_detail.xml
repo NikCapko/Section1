@@ -7,7 +7,8 @@
     <RelativeLayout
         android:id="@+id/rl_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:visibility="visible">
 
         <ImageView
             android:id="@+id/iv_product_status"
@@ -25,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/activity_margin"
             android:layout_marginTop="@dimen/activity_margin"
-            android:layout_marginRight="@dimen/activity_margin"
+            android:layout_marginRight="90dp"
             android:text="@string/product_name"
             android:textColor="@color/silver"
             android:textSize="@dimen/text_size_16" />
@@ -37,7 +38,7 @@
             android:layout_below="@+id/tv_product_name_title"
             android:layout_marginLeft="@dimen/activity_margin"
             android:layout_marginTop="@dimen/activity_margin_quarter"
-            android:layout_marginRight="@dimen/activity_margin"
+            android:layout_marginRight="90dp"
             android:textColor="@color/black"
             android:textSize="@dimen/text_size_16"
             tools:text="Название" />
@@ -90,23 +91,12 @@
             android:textSize="@dimen/text_size_16"
             tools:text="2" />
 
-        <TextView
-            android:id="@+id/tv_product_more_detail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_product_count"
-            android:layout_marginLeft="@dimen/activity_margin"
-            android:layout_marginTop="@dimen/activity_margin"
-            android:layout_marginRight="@dimen/activity_margin"
-            android:text="@string/product_more_detail"
-            android:textColor="@color/blue"
-            android:textSize="@dimen/text_size_16" />
     </RelativeLayout>
 
     <ProgressBar
         android:id="@+id/pb_load"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:layout_centerInParent="true"
         android:theme="@style/ProgressBarTheme"
         android:visibility="gone" />
@@ -118,7 +108,8 @@
         android:layout_centerInParent="true"
         android:gravity="center_horizontal"
         android:orientation="vertical"
-        android:visibility="gone">
+        android:visibility="gone"
+        tools:visibility="gone">
 
         <ImageView
             android:layout_width="50dp"
@@ -136,10 +127,13 @@
             android:textSize="@dimen/text_size_24" />
 
         <TextView
-            android:id="@+id/tv_error_description"
-            android:layout_width="wrap_content"
+            android:id="@+id/tv_description"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_margin_double_half_fourth"
             android:layout_marginTop="@dimen/activity_margin"
+            android:layout_marginRight="@dimen/activity_margin_double_half_fourth"
+            android:gravity="center"
             android:textColor="@color/black"
             android:textSize="@dimen/text_size_16"
             tools:text="Произошла ошибка" />
