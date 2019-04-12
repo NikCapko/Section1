@@ -71,6 +71,12 @@ public class ProductListActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.basket_menu, menu);
         return true;
@@ -121,12 +127,6 @@ public class ProductListActivity extends AppCompatActivity {
     private void showEmptyList() {
         lvProductList.setVisibility(View.GONE);
         llEmptyContainer.setVisibility(View.VISIBLE);
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        finish();
-        return true;
     }
 
     private void setProductModelList(List<ProductModel> categoryModelList) {

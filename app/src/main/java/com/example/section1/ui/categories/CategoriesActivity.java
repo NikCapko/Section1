@@ -143,17 +143,9 @@ public class CategoriesActivity extends AppCompatActivity {
                 .setIcon(R.drawable.ic_warning)
                 .setCancelable(false)
                 .setNegativeButton("НЕТ",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                            }
-                        })
+                        (dialog, id) -> dialog.cancel())
                 .setPositiveButton("ДА",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                finish();
-                            }
-                        });
+                        (dialog, id) -> finish());
         AlertDialog alert = builder.create();
         alert.show();
     }

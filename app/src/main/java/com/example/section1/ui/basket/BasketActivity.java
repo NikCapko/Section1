@@ -66,6 +66,12 @@ public class BasketActivity extends AppCompatActivity {
         makeProductsRequest();
     }
 
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
     private void makeProductsRequest() {
         showProgress();
         NetworkService.getInstance()
@@ -100,12 +106,6 @@ public class BasketActivity extends AppCompatActivity {
     private void showEmptyList() {
         lvProductList.setVisibility(View.GONE);
         llEmptyContainer.setVisibility(View.VISIBLE);
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
     }
 
     private void setProductModelList(List<ProductModel> categoryModelList) {
