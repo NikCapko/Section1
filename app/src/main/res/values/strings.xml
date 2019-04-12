@@ -8,6 +8,9 @@
     <string name="attention">Внимание</string>
     <string name="success">Готово</string>
     <string name="ok">Ок</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+    <string name="app_exi_question">Вы действительно хотите выйти из приложения ?</string>
 
     <!--Errors-->
     <string name="message_error_connect">Отсутствует соединение с интернетом</string>

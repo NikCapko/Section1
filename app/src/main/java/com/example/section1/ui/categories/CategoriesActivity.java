@@ -138,13 +138,13 @@ public class CategoriesActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         AlertDialog.Builder builder = new AlertDialog.Builder(CategoriesActivity.this);
-        builder.setTitle("Внимание!")
-                .setMessage("Вы действительно хотите выйти из приложения ?")
+        builder.setTitle(getApplicationContext().getString(R.string.attention))
+                .setMessage(getApplicationContext().getString(R.string.app_exi_question))
                 .setIcon(R.drawable.ic_warning)
                 .setCancelable(false)
-                .setNegativeButton("НЕТ",
+                .setNegativeButton(getApplicationContext().getString(R.string.no),
                         (dialog, id) -> dialog.cancel())
-                .setPositiveButton("ДА",
+                .setPositiveButton(getApplicationContext().getString(R.string.yes),
                         (dialog, id) -> finish());
         AlertDialog alert = builder.create();
         alert.show();

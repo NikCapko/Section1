@@ -140,22 +140,14 @@ public class SignInActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         AlertDialog.Builder builder = new AlertDialog.Builder(SignInActivity.this);
-        builder.setTitle("Внимание!")
-                .setMessage("Вы действительно хотите выйти из приложения ?")
+        builder.setTitle(getApplicationContext().getString(R.string.attention))
+                .setMessage(getApplicationContext().getString(R.string.app_exi_question))
                 .setIcon(R.drawable.ic_warning)
                 .setCancelable(false)
-                .setNegativeButton("НЕТ",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                            }
-                        })
-                .setPositiveButton("ДА",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                finish();
-                            }
-                        });
+                .setNegativeButton(getApplicationContext().getString(R.string.no),
+                        (dialog, id) -> dialog.cancel())
+                .setPositiveButton(getApplicationContext().getString(R.string.yes),
+                        (dialog, id) -> finish());
         AlertDialog alert = builder.create();
         alert.show();
     }
