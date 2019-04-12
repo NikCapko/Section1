@@ -1,8 +1,10 @@
 package com.example.section1.ui.sign_in;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +19,7 @@ import com.example.section1.dialogs.ProgressDialog;
 import com.example.section1.net.ErrorData;
 import com.example.section1.net.NetworkService;
 import com.example.section1.routing.Router;
+import com.example.section1.ui.categories.CategoriesActivity;
 import com.example.section1.utils.Constants;
 
 import butterknife.BindView;
@@ -132,5 +135,28 @@ public class SignInActivity extends AppCompatActivity {
         if (progressDialog != null) {
             progressDialog.dismiss();
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(SignInActivity.this);
+        builder.setTitle("Внимание!")
+                .setMessage("Вы действительно хотите выйти из приложения ?")
+                .setIcon(R.drawable.ic_warning)
+                .setCancelable(false)
+                .setNegativeButton("НЕТ",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        })
+                .setPositiveButton("ДА",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                finish();
+                            }
+                        });
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 }

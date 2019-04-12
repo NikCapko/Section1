@@ -1,7 +1,9 @@
 package com.example.section1.ui.categories;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -131,5 +133,28 @@ public class CategoriesActivity extends AppCompatActivity {
     @OnClick(R.id.btn_repeat)
     public void onViewClicked() {
         makeCategoryRequest();
+    }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(CategoriesActivity.this);
+        builder.setTitle("Внимание!")
+                .setMessage("Вы действительно хотите выйти из приложения ?")
+                .setIcon(R.drawable.ic_warning)
+                .setCancelable(false)
+                .setNegativeButton("НЕТ",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        })
+                .setPositiveButton("ДА",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                finish();
+                            }
+                        });
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 }
