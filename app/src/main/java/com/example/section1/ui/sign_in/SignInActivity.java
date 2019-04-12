@@ -92,6 +92,8 @@ public class SignInActivity extends AppCompatActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_sign_in:
+                tilLogin.setError(null);
+                tilPassword.setError(null);
                 String login = etLogin.getText().toString();
                 String password = etPassword.getText().toString();
                 UserLoginModel userLoginModel = new UserLoginModel(login, password);
