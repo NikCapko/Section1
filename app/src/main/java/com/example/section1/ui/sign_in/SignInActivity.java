@@ -68,8 +68,9 @@ public class SignInActivity extends AppCompatActivity {
                             StatusModel statusModel = baseModel.getStatusModel();
                             if (statusModel.getCode().equals(Constants.RESPONSE_200)) {
                                 hideProgressDialog();
+                                //cleanFields();
                                 Router.openCategoriesScreen(SignInActivity.this);
-                                finish();
+                                //finish();
                             } else if (statusModel.getCode().equals(Constants.RESPONSE_401)) {
                                 tilLogin.setError(getApplicationContext().getString(R.string.sign_in_error));
                                 tilPassword.setError(getApplicationContext().getString(R.string.sign_in_error));
@@ -97,7 +98,6 @@ public class SignInActivity extends AppCompatActivity {
                 makeSignInRequest(userLoginModel);
                 break;
             case R.id.btn_sign_up:
-                cleanFields();
                 Router.openSignUpScreen(SignInActivity.this);
                 break;
         }

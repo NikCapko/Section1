@@ -57,7 +57,14 @@ public class CategoriesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_categories);
         ButterKnife.bind(this);
         setTitle(R.string.category_screen_title);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         makeCategoryRequest();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     @Override
@@ -136,7 +143,8 @@ public class CategoriesActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(CategoriesActivity.this);
+        super.onBackPressed();
+        /*AlertDialog.Builder builder = new AlertDialog.Builder(CategoriesActivity.this);
         builder.setTitle(getApplicationContext().getString(R.string.attention))
                 .setMessage(getApplicationContext().getString(R.string.app_exi_question))
                 .setIcon(R.drawable.ic_warning)
@@ -146,6 +154,6 @@ public class CategoriesActivity extends AppCompatActivity {
                 .setPositiveButton(getApplicationContext().getString(R.string.yes),
                         (dialog, id) -> finish());
         AlertDialog alert = builder.create();
-        alert.show();
+        alert.show();*/
     }
 }
