@@ -2,10 +2,7 @@ package com.example.section1.ui.categories;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -19,7 +16,6 @@ import com.example.section1.data.dataclasses.CategoryModel;
 import com.example.section1.data.dataclasses.StatusModel;
 import com.example.section1.net.ErrorData;
 import com.example.section1.net.NetworkService;
-import com.example.section1.routing.Router;
 import com.example.section1.ui.categories.adapter.CategoriesAdapter;
 import com.example.section1.utils.Constants;
 
@@ -67,23 +63,6 @@ public class CategoriesActivity extends AppCompatActivity {
         return true;
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.basket_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        switch (id) {
-            case R.id.basket:
-                Router.openBasketScreen(CategoriesActivity.this);
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
     private void makeCategoryRequest() {
         showProgress();
         NetworkService.getInstance()
@@ -114,7 +93,8 @@ public class CategoriesActivity extends AppCompatActivity {
     private void setCategoryModelList(List<CategoryModel> categoryModelList) {
         categoriesAdapter = new CategoriesAdapter(getApplicationContext(), R.layout.row_categories_item, categoryModelList);
         lvCategoriesList.setAdapter(categoriesAdapter);
-        categoriesAdapter.setOnClickListener(categoryId -> Router.openProductListScreen(CategoriesActivity.this, categoryId));
+        categoriesAdapter.setOnClickListener(categoryId -> {
+        });
     }
 
     private void showProgress() {
